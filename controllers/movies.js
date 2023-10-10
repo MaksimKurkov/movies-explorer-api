@@ -4,12 +4,14 @@ const BadRequestError = require('../errors/badRequestError');
 const ForbiddenError = require('../errors/forbiddenError');
 const NotFoundError = require('../errors/notFoundError');
 
-module.exports.getMovies = (req, res, next) => movieModel.find({})
-  .populate(['owner'])
-  .then((movies) => {
-    res.send(movies);
-  })
-  .catch(next);
+module.exports.getMovies = (req, res, next) => {
+  const currentUser = req.user._id;
+  movieModel.find({ owner: currentUser })
+    .then((movies) => {
+      res.send(movies);
+    })
+    .catch(next);
+};
 
 module.exports.createMovie = (req, res, next) => {
   const {
