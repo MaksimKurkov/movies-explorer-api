@@ -1,7 +1,7 @@
 const rateLimit = require('express-rate-limit');
 
 const corsOptions = {
-  origin: 'http://localhost:3001',
+  origin: 'https://kurkov.movie.nomoredomainsmonster.ru',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   credentials: true,
